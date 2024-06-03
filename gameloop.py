@@ -3,8 +3,9 @@ from deck import Deck
 
 
 class GameLoop:
-    def __init__(self, players):
-        self.players = [Player(name) for name in players]
+    def __init__(self, config):
+        self.players = [Player(name, config[name]) for name in config.keys()]
+        self.config = config
         self.deck = Deck()
         self.roundCount = 1
         self.active_players = self.players[:]
@@ -51,7 +52,7 @@ class GameLoop:
     def player_decision(self):
         self.leaving_players = []
         for player in self.active_players:
-            des = player.decision()
+            des = player.decision(self.__dict__)
             if not des:
                 self.leaving_players.append(player)
         if self.leaving_players:
@@ -83,5 +84,5 @@ class GameLoop:
                 return True
 
     def round_win(self):
-        winning_players = [player.name for player in self.players if player.vault == max([player.vault for player in self.players])]
+        winning_players = [[player.name, player.vault] for player in self.players if player.vault == max([player.vault for player in self.players])]
         return winning_players

@@ -2,8 +2,11 @@ from decision import players_brain
 
 
 class Player:
-    def __init__(self, name):
+    def __init__(self, name, coefs):
         self.name = name
+
+        self.dng_coef = coefs['dng_coef']
+
         self.vault = 0
         self.gems = 0
 
@@ -17,5 +20,5 @@ class Player:
     def set_gems_zero(self):
         self.gems = 0
 
-    def decision(self):
-        return players_brain(self.name)
+    def decision(self, game_state):
+        return players_brain(self.name, game_state)

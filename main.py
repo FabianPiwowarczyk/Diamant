@@ -1,8 +1,16 @@
+import json
+
 from gameloop import GameLoop
-import random
 from deck import Deck
 
-game = GameLoop(['Heini', 'Olaf', 'Torsten', 'Günni', 'Ursula'])
+
+cnfg_path = 'data/config.json'
+
+with open(cnfg_path, 'r') as file:
+    config = json.load(file)
+
+game = GameLoop(config)
 
 game.main_loop()
+#game.player_decision()
 

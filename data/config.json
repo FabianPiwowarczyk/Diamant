@@ -1,0 +1,17 @@
+{
+  "Heini": {
+    "dng_coef": 15
+            },
+  "Olaf": {
+    "dng_coef": 8
+            },
+  "Torsten": {
+    "dng_coef": 10
+            },
+  "Guenni": {
+    "dng_coef": 4
+            },
+  "Ursula": {
+    "dng_coef": 6
+            }
+}
